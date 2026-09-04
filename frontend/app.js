@@ -25,7 +25,7 @@ analyzeBtn.addEventListener('click', async () => {
   loading.hidden = false;
 
   try {
-    const res = await fetch('/api/analyze', {
+    const res = await fetch('https://scam-detector-2m7z.onrender.com/api/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message }),
