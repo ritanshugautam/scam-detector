@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is This a Scam?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Is This a Scam?</h1>
+      <p class="subtitle">Paste a suspicious WhatsApp or SMS message below. We'll analyze it for fraud patterns common in India.</p>
+    </header>
+
+    <main>
+      <div class="input-section">
+        <label for="message-input">Paste the suspicious message</label>
+        <textarea
+          id="message-input"
+          placeholder="E.g. Congratulations! You have won Rs. 50,000 in the KBC Lucky Draw. Send your Aadhaar number to claim your prize..."
+          rows="6"
+        ></textarea>
+        <span id="input-error" class="error-text" hidden>Please paste a message first</span>
+        <button id="analyze-btn">Analyze Message</button>
+      </div>
+
+      <div id="loading" class="loading" hidden>
+        <div class="spinner"></div>
+        <p>Analyzing for scam indicators…</p>
+      </div>
+
+      <section id="results" class="results" hidden>
+        <div id="verdict-badge" class="verdict-badge"></div>
+
+        <div class="result-card">
+          <h3>Summary</h3>
+          <p id="explanation"></p>
+        </div>
+
+        <div class="result-card" id="red-flags-card">
+          <h3>Red Flags Detected</h3>
+          <ul id="red-flags-list"></ul>
+        </div>
+
+        <div class="result-card">
+          <h3>What To Do</h3>
+          <ol id="what-to-do-list"></ol>
+        </div>
+      </section>
+
+      <div id="error-banner" class="error-banner" hidden>
+        Something went wrong. Try again.
+      </div>
+    </main>
+
+    <footer>
+      <p>This tool uses AI to detect fraud patterns. Always exercise caution with unsolicited messages.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

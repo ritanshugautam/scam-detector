@@ -1,0 +1,277 @@
+/* Ensure [hidden] always wins over display rules set by class selectors */
+[hidden] { display: none !important; }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 3rem;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Input card */
+.input-section {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 0.6rem;
+}
+
+textarea {
+  width: 100%;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 130px;
+  color: #111827;
+  background: #fafafa;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+textarea.has-error {
+  border-color: #ef4444;
+}
+
+.error-text {
+  display: block;
+  color: #ef4444;
+  font-size: 0.82rem;
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+#analyze-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.1rem;
+  padding: 0.9rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.1s;
+}
+
+#analyze-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+#analyze-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+#analyze-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* Loading spinner */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2.25rem 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Results */
+.results {
+  margin-top: 2rem;
+}
+
+.verdict-badge {
+  text-align: center;
+  padding: 1.1rem 1.5rem;
+  border-radius: 14px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.25rem;
+}
+
+.verdict-badge.scam {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 2px solid #fca5a5;
+}
+
+.verdict-badge.likely-scam {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 2px solid #fb923c;
+}
+
+.verdict-badge.looks-safe {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 2px solid #86efac;
+}
+
+.result-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.result-card h3 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-bottom: 0.75rem;
+}
+
+.result-card p {
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* Red flags */
+#red-flags-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#red-flags-list li {
+  padding: 0.3rem 0 0.3rem 1.6rem;
+  position: relative;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+#red-flags-list li::before {
+  content: "⚠";
+  position: absolute;
+  left: 0;
+  font-size: 0.85rem;
+  top: 0.35rem;
+}
+
+/* What to do */
+#what-to-do-list {
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+#what-to-do-list li {
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+/* Error banner */
+.error-banner {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1.5px solid #fca5a5;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 1.65rem;
+  }
+
+  .verdict-badge {
+    font-size: 1.3rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .input-section,
+  .result-card {
+    padding: 1.25rem 1rem;
+  }
+}
