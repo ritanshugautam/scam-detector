@@ -2,6 +2,9 @@
 
 A fraud detection web app for Indian users who receive suspicious WhatsApp or SMS messages. Paste a message, get an instant AI-powered verdict.
 
+**Live Demo:** https://scam-detector-steel.vercel.app
+**Backend API:** https://scam-detector-2m7z.onrender.com
+
 ## The Problem
 
 India loses billions of rupees every year to digital fraud. Scammers impersonate banks, UIDAI, government schemes, and popular brands to extract OTPs, Aadhaar numbers, and money from ordinary people. Most victims don't realize they're being scammed until it's too late — the message looks official, the urgency feels real, and the average person has no quick way to verify it.
@@ -12,8 +15,10 @@ This tool gives anyone a second opinion in seconds.
 
 - **Frontend:** Vanilla HTML, CSS, JavaScript — no frameworks, no build step
 - **Backend:** Node.js + Express
-- **AI:** Anthropic Claude Sonnet (via the Messages API)
+- **AI:** Google Gemini (via the Generative Language API)
 - **HTTP client:** Axios
+- **Frontend hosting:** Vercel (free)
+- **Backend hosting:** Render (free)
 
 ## Run Locally
 
@@ -26,10 +31,10 @@ This tool gives anyone a second opinion in seconds.
 2. **Create a `.env` file** in the project root:
 
    ```
-   ANTHROPIC_API_KEY=sk-ant-...
+   GEMINI_API_KEY=your-key-here
    ```
 
-   Get your key at [console.anthropic.com](https://console.anthropic.com).
+   Get a free key at [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey).
 
 3. **Start the server**
 
@@ -50,7 +55,7 @@ scam_detection/
 ├── backend/
 │   ├── server.js           # Express app + static file serving
 │   └── routes/
-│       └── analyze.js      # POST /api/analyze — calls Claude
+│       └── analyze.js      # POST /api/analyze — calls Gemini
 ├── .gitignore
 ├── package.json
 └── README.md
